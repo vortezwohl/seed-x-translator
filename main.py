@@ -31,4 +31,4 @@ async def _translate(req: TranslateReq):
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app='main:app', host='0.0.0.0', port=2386, log_level='debug', workers=16)
+    uvicorn.run(app='main:app', host='0.0.0.0', port=2386, log_level='debug', workers=1)
