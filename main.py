@@ -26,3 +26,8 @@ async def _translate(req: TranslateReq):
             max_tokens=req.max_tokens,
             min_tokens=req.min_tokens
         )
+
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run(app='main:app', host='0.0.0.0', port=2386, log_level='debug', workers=16)
