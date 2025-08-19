@@ -1,0 +1,13 @@
+[project]
+name = "seed-x-translator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.116.1",
+    "llm-inference",
+]
+
+[tool.uv.sources]
+llm-inference = { git = "https://gitlab.changdu.ltd/060270/llm_inference.git", rev = "main" }
