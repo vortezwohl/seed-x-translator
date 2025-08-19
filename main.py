@@ -9,8 +9,8 @@ translator_semaphore = Semaphore(3)
 app = FastAPI()
 
 
-@app.post('/v1/translate')
-async def _translate(req: TranslateReq):
+@app.post('/v1/translate_cot')
+async def _translate_cot(req: TranslateReq):
     async with translator_semaphore:
         cot = translate(
             sentence=req.sentence,
