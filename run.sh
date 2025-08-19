@@ -1,0 +1,1 @@
+uv sync && uv run uvicorn --port 2386 --host 0.0.0.0 --workers 8 --app main:app
