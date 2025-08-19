@@ -12,7 +12,7 @@ app = FastAPI()
 @app.post('/v1/translate')
 async def _translate(req: TranslateReq):
     async with translator_semaphore:
-        cot = translate(
+        translation = translate(
             sentence=req.sentence,
             target_lang=req.target_lang,
             presence_penalty=req.presence_penalty,
@@ -28,13 +28,13 @@ async def _translate(req: TranslateReq):
         )
         return {'original': req.sentence,
                 'lang': req.target_lang,
-                'cot': cot}
+                'translation': translation}
 
 
 @app.post('/v1/translate_cot')
 async def _translate_cot(req: TranslateReq):
     async with translator_semaphore:
-        translation = translate_cot(
+        cot = translate_cot(
             sentence=req.sentence,
             target_lang=req.target_lang,
             resample=req.resample,
@@ -51,7 +51,7 @@ async def _translate_cot(req: TranslateReq):
         )
         return {'original': req.sentence,
                 'lang': req.target_lang,
-                'translation': translation}
+                'cot': cot}
 
 
 if __name__ == '__main__':
