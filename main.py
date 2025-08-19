@@ -12,7 +12,7 @@ app = FastAPI()
 @app.post('/v1/translate')
 async def _translate(req: TranslateReq):
     async with translator_semaphore:
-        return translate(
+        translation = translate(
             sentence=req.sentence,
             target_lang=req.target_lang,
             resample=req.resample,
@@ -27,6 +27,9 @@ async def _translate(req: TranslateReq):
             max_tokens=req.max_tokens,
             min_tokens=req.min_tokens
         )
+        return {'original': req.sentence,
+                'lang': req.target_lang,
+                'translation': translation}
 
 
 if __name__ == '__main__':
