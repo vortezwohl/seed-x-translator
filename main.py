@@ -6,7 +6,7 @@ from vllm_inference.model import load_model
 
 from data import TranslateReq
 
-seed_x_model = load_model('ByteDance-Seed/Seed-X-PPO-7B')
+seed_x_model = load_model('ByteDance-Seed/Seed-X-PPO-7B', quantization=None)
 translator_semaphore = Semaphore(24)
 app = FastAPI()
 
