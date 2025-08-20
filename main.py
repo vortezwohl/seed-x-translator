@@ -1,7 +1,7 @@
 from asyncio import Semaphore
 
 from fastapi import FastAPI
-from llm_inference.translation.seed_x import translate_cot
+from vllm_inference.translation.seed_x import translate_cot
 
 from data import TranslateReq
 
