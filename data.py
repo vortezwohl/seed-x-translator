@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class TranslateReq:
     sentence: str
+    context: str
     target_lang: str
     resample: int = 1
     presence_penalty: float = 0.0
