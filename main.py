@@ -14,8 +14,8 @@ async def _translate_cot(req: TranslateReq):
     async with translator_semaphore:
         cot = translate_cot(
             sentence=req.sentence,
-            prefix=req.prefix,
             target_lang=req.target_lang,
+            prefix=req.prefix,
             resample=req.resample,
             presence_penalty=req.presence_penalty,
             frequency_penalty=req.frequency_penalty,
