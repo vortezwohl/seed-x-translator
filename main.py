@@ -5,7 +5,7 @@ from llm_inference.translation.seed_x import translate_cot
 
 from data import TranslateReq
 
-translator_semaphore = Semaphore(3)
+translator_semaphore = Semaphore(24)
 app = FastAPI()
 
 
