@@ -2,9 +2,11 @@ from asyncio import Semaphore
 
 from fastapi import FastAPI
 from vllm_inference.translation.seed_x import translate_cot
+from vllm_inference.model import load_model
 
 from data import TranslateReq
 
+seed_x_model = load_model('ByteDance-Seed/Seed-X-PPO-7B-GPTQ-Int8')
 translator_semaphore = Semaphore(24)
 app = FastAPI()
 
@@ -13,6 +15,7 @@ app = FastAPI()
 async def _translate_cot(req: TranslateReq):
     async with translator_semaphore:
         cot = translate_cot(
+            llm=seed_x_model,
             sentence=req.sentence,
             target_lang=req.target_lang,
             prefix=req.prefix,
